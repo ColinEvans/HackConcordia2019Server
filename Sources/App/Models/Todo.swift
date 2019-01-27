@@ -26,10 +26,10 @@ final class plays: PostgreSQLModel {
     var longitude: Float
 
     /// The time the song was played
-    var playDate: String
+    var playDate: Date
 
     /// Creates a new `Todo`.
-    init(id: Int? = nil, songId: Int, artistId: Int, latitude: Float, longitude: Float, playDate: String, style: String, state: String) {
+    init(id: Int? = nil, songId: Int, artistId: Int, latitude: Float, longitude: Float, playDate: Date, style: String, state: String) {
         self.id = id
         self.songId = songId
         self.artistId = artistId
