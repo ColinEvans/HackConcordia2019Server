@@ -13,4 +13,5 @@ struct Flags: Content {
     var startDate: String
     var endDate: String
     var state: String? // could be sent as nil if lat and long are sent
+    var filter: String?
 }

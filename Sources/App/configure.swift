@@ -15,13 +15,18 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     var middlewares = MiddlewareConfig() // Create _empty_ middleware config
     /// middlewares.use(FileMiddleware.self) // Serves files from `Public/` directory
     middlewares.use(ErrorMiddleware.self) // Catches errors and converts to HTTP response
+    middlewares.use(CORSMiddleware(configuration: CORSMiddleware.Configuration(
+        allowedOrigin: .all,
+        allowedMethods: [.GET, .POST, .PUT, .OPTIONS, .DELETE, .PATCH],
+        allowedHeaders: [.accept, .authorization, .contentType, .origin, .xRequestedWith, .userAgent, .accessControlAllowOrigin]))
+    )
     services.register(middlewares)
     
     let postgresqlConfig = PostgreSQLDatabaseConfig(
         hostname: "127.0.0.1",
         port: 5432,
         username: "postgres",
-        database: "Colin",
+        database: "postgres",
         password: nil
     )
 
