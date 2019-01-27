@@ -14,11 +14,11 @@ final class TodoController {
             return conn.raw(
                 """
 SELECT COUNT(*) as count, "songId", MAX("artistId") as "artistId", MAX("state") as "state", MAX("style") as "style" FROM plays
-GROUP BY "songId"
-ORDER BY count DESC
 WHERE "playDate" >= '\(flags.startDate)'
 AND "playDate" <= '\(flags.endDate)'
 \(stateClause)
+GROUP BY "songId"
+ORDER BY count DESC
 LIMIT 3
 """).all(decoding: SongRecord.self)
         }

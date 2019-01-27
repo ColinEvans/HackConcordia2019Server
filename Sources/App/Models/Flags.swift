@@ -10,7 +10,7 @@ import Vapor
 
 /// Convertible to / from content in an HTTP message.
 struct Flags: Content {
-    var startDate: Date
-    var endDate: Date
+    var startDate: String
+    var endDate: String
     var state: String? // could be sent as nil if lat and long are sent
 }
